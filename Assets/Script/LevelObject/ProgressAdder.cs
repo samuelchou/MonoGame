@@ -1,17 +1,22 @@
-﻿using Script.System;
+﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Script.LevelObject
 {
     public class ProgressAdder : MonoBehaviour
     {
-        public float addProgress = 1.0f;
+        public UnityEvent invokeOnDestroy;
 
         private void OnMouseDown()
         {
-            Debug.Log("clicked and add progress " + addProgress);
-            GameObject.FindWithTag("System").GetComponent<LevelManager>().AddProgress(addProgress);
             Destroy(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            Debug.Log("Ball " + gameObject.name + " exploded into pieces.");
+            invokeOnDestroy.Invoke();
         }
     }
 }
