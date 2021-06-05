@@ -4,12 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class StartLevel1 : MonoBehaviour
 {
-    private void Update()
+    private void OnMouseDown()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Debug.Log("Pressed enter.");
-            SceneManager.LoadSceneAsync(Constants.LevelScene.Level1);
-        }
+        Debug.Log("clicked this.");
+        SceneManager.LoadSceneAsync(Constants.LevelScene.Level1);
     }
 }
