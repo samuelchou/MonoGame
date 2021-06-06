@@ -1,4 +1,4 @@
-using Script;
+using Script.System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

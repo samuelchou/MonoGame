@@ -1,4 +1,4 @@
-﻿namespace Script
+﻿namespace Script.System
 {
     public static class Constants
     {
