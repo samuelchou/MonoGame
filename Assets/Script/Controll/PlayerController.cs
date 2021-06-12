@@ -26,11 +26,11 @@ namespace Script.System
         // Update is called once per frame
         private void Update()
         {
-            var hDirection = Input.GetAxis(Constants.Input.Horiznotal);
-            var vDirection = Input.GetAxis(Constants.Input.Vertical);
+            var hDirection = Input.GetAxis("Horizontal");
+            var vDirection = Input.GetAxis("Vertical");
             var movingVelocity = (Vector3.right * hDirection + Vector3.forward * vDirection) * _moveSpeed;
 
-            if (Input.GetButtonDown(Constants.Input.Jump))
+            if (Input.GetButtonDown("Jump"))
             {
                 if (_controller.isGrounded || _hasJumped < _jumpTimeLimit || _jumpTimeLimit == 0)
                 {
