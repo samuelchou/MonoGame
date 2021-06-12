@@ -1,9 +1,7 @@
 using UnityEngine;
 
-namespace Script.Control
-{
-    public class PlayerController : MonoBehaviour
-    {
+namespace Script.Control {
+    public class PlayerController : MonoBehaviour {
         [SerializeField] private float _moveSpeed = 7f;
         [SerializeField] private float _jumpHeight = 3f;
 
@@ -17,29 +15,25 @@ namespace Script.Control
         private Vector3 gravityVelocity;
 
         // Start is called before the first frame update
-        private void Start()
-        {
+        private void Start() {
             _controller = GetComponent<CharacterController>();
             gravityConstant = Physics.gravity.magnitude;
         }
 
         // Update is called once per frame
-        private void Update()
-        {
+        private void Update() {
             var hDirection = Input.GetAxis("Horizontal");
             var vDirection = Input.GetAxis("Vertical");
-            var movingVelocity = (Vector3.right * hDirection + Vector3.forward * vDirection) * _moveSpeed;
+            var transform1 = transform;
+            var movingVelocity = (transform1.right * hDirection + transform1.forward * vDirection) * _moveSpeed;
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                if (_controller.isGrounded || _hasJumped < _jumpTimeLimit || _jumpTimeLimit == 0)
-                {
+            if (Input.GetButtonDown("Jump")) {
+                if (_controller.isGrounded || _hasJumped < _jumpTimeLimit || _jumpTimeLimit == 0) {
                     gravityVelocity = Mathf.Sqrt(_jumpHeight * 2 * gravityConstant) * -Physics.gravity.normalized;
                     _hasJumped++;
                 }
             }
-            else
-            {
+            else {
                 gravityVelocity = _controller.isGrounded
                     ? Vector3.zero
                     : gravityVelocity + Physics.gravity * Time.deltaTime;
