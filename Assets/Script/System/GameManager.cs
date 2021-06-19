@@ -7,6 +7,11 @@ namespace Script.System {
             SceneManager.LoadSceneAsync(sceneName);
         }
 
+        public void RestartScene() {
+            SceneManager.LoadScene(
+                SceneManager.GetActiveScene().buildIndex);
+        }
+
         public void QuitGame() {
             Debug.Log("Quit Game");
             Application.Quit();
