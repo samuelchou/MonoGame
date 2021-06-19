@@ -1,24 +1,19 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
-namespace Script.System
-{
-    public class LevelManager : MonoBehaviour
-    {
-        public float progress = 0;
+namespace Script.System {
+    public class LevelManager : MonoBehaviour {
+        public float progress;
+        public UnityEvent onLevelFinishEvent;
 
-        private void LateUpdate()
-        {
-            if (progress >= 100)
-            {
+        private void LateUpdate() {
+            if (progress >= 100) {
                 Debug.Log("Finished level.");
-                SceneManager.LoadSceneAsync(Constants.LevelScene.MainScene);
+                onLevelFinishEvent.Invoke();
             }
         }
 
-        public void AddProgress(float add)
-        {
+        public void AddProgress(float add) {
             progress += add;
         }
     }
