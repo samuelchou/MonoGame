@@ -14,12 +14,6 @@ namespace Script.System {
         private bool hasloadedPauseMenu = false;
         public KeyCode pauseKey = KeyCode.Escape;
 
-        private void Update() {
-            if (Input.GetKeyDown(pauseKey)) {
-                TogglePause();
-            }
-        }
-
         public void TogglePause() {
             if (!isPaused)
             {
