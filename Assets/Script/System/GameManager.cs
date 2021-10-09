@@ -14,14 +14,16 @@ namespace Script.System {
         private bool hasloadedPauseMenu = false;
         public KeyCode pauseKey = KeyCode.Escape;
 
+        public void GoToMainMenu() {
+            Debug.Log("Back to main menu.");
+            SceneManager.LoadScene(Constants.LevelScene.MainScene);
+        }
+
         public void TogglePause() {
             Debug.Log("isPaused is " + isPaused);
-            if (!isPaused)
-            {
+            if (!isPaused) {
                 OpenPauseMenu();
-            }
-            else
-            {
+            } else {
                 ClosePauseMenu();
             }
             isPaused = !isPaused;
@@ -35,8 +37,7 @@ namespace Script.System {
 
         public void ClosePauseMenu() {
             Debug.Log("Closing pause menu...");
-            if (!hasloadedPauseMenu)
-            {
+            if (!hasloadedPauseMenu) {
                 Debug.LogError("Pause Menu not loaded! Won't do anything.");
                 return;
             }
