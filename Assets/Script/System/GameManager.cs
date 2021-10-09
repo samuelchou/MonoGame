@@ -15,22 +15,21 @@ namespace Script.System {
         public KeyCode pauseKey = KeyCode.Escape;
 
         public void TogglePause() {
+            Debug.Log("isPaused is " + isPaused);
             if (!isPaused)
             {
                 OpenPauseMenu();
-                isPaused = true;
             }
             else
             {
                 ClosePauseMenu();
-                isPaused = false;
             }
-
+            isPaused = !isPaused;
         }
 
         private void OpenPauseMenu() {
             Debug.Log("Open pause menu.");
-            SceneManager.LoadSceneAsync(Constants.LevelScene.PauseMenu, LoadSceneMode.Additive);
+            SceneManager.LoadScene(Constants.LevelScene.PauseMenu, LoadSceneMode.Additive);
             hasloadedPauseMenu = true;
         }
 
