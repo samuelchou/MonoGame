@@ -8,7 +8,7 @@ public class ButtonEvent : MonoBehaviour {
     public KeyCode inputKey = KeyCode.Tab;
     public UnityEvent triggerEvent;
 
-    private void FixedUpdate() {
-        if (Input.GetKeyDown(inputKey)) triggerEvent.Invoke();
+    private void Update() {
+        if (Input.GetKeyUp(inputKey)) triggerEvent.Invoke();
     }
 }
